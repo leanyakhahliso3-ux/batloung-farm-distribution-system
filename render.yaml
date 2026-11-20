@@ -21,6 +21,8 @@ services:
         sync: false
       - key: DB_NAME
         sync: false
+      - key: DB_SSL
+        value: "true"
       - key: CORS_ORIGIN
         value: https://batloung-web.onrender.com
 
