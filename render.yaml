@@ -1,4 +1,4 @@
-services:
+﻿services:
   - type: web
     name: batloung-api
     runtime: node
@@ -32,7 +32,7 @@ services:
     plan: free
     region: oregon
     rootDir: client
-    buildCommand: npm install && npm run build
+    buildCommand: npm install --include=dev && npm run build
     startCommand: npm start
     healthCheckPath: /
     envVars:
