@@ -1,0 +1,42 @@
+services:
+  - type: web
+    name: batloung-api
+    runtime: node
+    plan: free
+    region: oregon
+    rootDir: server
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: DB_HOST
+        sync: false
+      - key: DB_PORT
+        value: 3306
+      - key: DB_USER
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+      - key: DB_NAME
+        sync: false
+      - key: CORS_ORIGIN
+        value: https://batloung-web.onrender.com
+
+  - type: web
+    name: batloung-web
+    runtime: node
+    plan: free
+    region: oregon
+    rootDir: client
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    healthCheckPath: /
+    envVars:
+      - key: PORT
+        value: 10000
+      - key: NODE_ENV
+        value: production
+      - key: VITE_API_URL
+        value: https://batloung-api.onrender.com/api
